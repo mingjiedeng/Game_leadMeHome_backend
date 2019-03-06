@@ -1,0 +1,66 @@
+# Spring configuration
+spring:
+  application.name: game-leadMeHome
+  profiles.active: dev
+  jackson.serialization.INDENT_OUTPUT: true
+
+server:
+  port: 8080
+
+# JWT
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 86400
+  tokenSchema: "Bearer "
+  routes:
+    authenticate: auth
+    register: "auth/register"
+    refresh: "auth/refresh"
+
+# CORS
+cors:
+  allowedOrigins: "http://localhost:3000"
+  maxAge: 3600
+
+# Logging configuration
+logging:
+  level:
+    org.springframework:
+      data: DEBUG
+      security: DEBUG
+---
+spring:
+  profiles: dev
+  data.mongodb:
+    host: localhost
+    port: 27017
+    database: game_led_me_home
+
+---
+spring:
+  profiles: test
+  data.mongodb:
+    host: localhost
+    port: 27017
+    database: game_test
+
+---
+spring:
+  profiles: prod
+  data.mongodb:
+    uri: mongodb+srv://Jason:jibuzhu@cluster0-sgdid.gcp.mongodb.net/game_led_me_home?retryWrites=true
+#    host: cluster0-sgdid.gcp.mongodb.net
+#    port: 27017
+#    username: Jason
+#    password: jibuzhu
+#    database: game_led_me_home
+
+#    mongodb+srv://Jason:<password>@cluster0-sgdid.gcp.mongodb.net/test?retryWrites=true
+#
+#
+#    MongoClientURI uri = new MongoClientURI(
+#    "mongodb+srv://Jason:<password>@cluster0-sgdid.gcp.mongodb.net/test?retryWrites=true");
+#
+#    MongoClient mongoClient = new MongoClient(uri);
+#    MongoDatabase database = mongoClient.getDatabase("test");
