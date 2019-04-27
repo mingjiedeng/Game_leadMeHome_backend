@@ -5,7 +5,7 @@ spring:
   jackson.serialization.INDENT_OUTPUT: true
 
 server:
-  port: 8080
+  port: 5000
 
 # JWT
 jwt:
@@ -56,11 +56,3 @@ spring:
 #    password: jibuzhu
 #    database: game_led_me_home
 
-#    mongodb+srv://Jason:<password>@cluster0-sgdid.gcp.mongodb.net/test?retryWrites=true
-#
-#
-#    MongoClientURI uri = new MongoClientURI(
-#    "mongodb+srv://Jason:<password>@cluster0-sgdid.gcp.mongodb.net/test?retryWrites=true");
-#
-#    MongoClient mongoClient = new MongoClient(uri);
-#    MongoDatabase database = mongoClient.getDatabase("test");
